@@ -35,6 +35,7 @@ function Stepper({children, steps = STEPS, activeStep}: Props) {
                 className={styles['step-label']}
                 optional={<h3>{step.label}</h3>}
                 icon={<span>{index + 1}</span>}
+                data-testid={`step-label-${index + 1}`}
                 sx={{
                   '.Mui-active.MuiStepLabel-iconContainer span': {
                     backgroundColor: '#BEE2FD',
@@ -53,7 +54,7 @@ function Stepper({children, steps = STEPS, activeStep}: Props) {
                   },
                   '.MuiStepLabel-labelContainer': {
                     display: isMobile ? 'none' : '',
-                  }
+                  },
                 }}
               >
                 {step.description}
