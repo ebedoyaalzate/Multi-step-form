@@ -18,14 +18,14 @@ interface Props {
 }
 
 function Stepper({children, steps = STEPS, activeStep}: Props) {
-  const isMobile = useMediaQuery('(min-width:600px)')
+  const isMobile = useMediaQuery('(max-width: 700px)')
 
   return (
     <Container className={styles['container']}>
       <Box className={styles['stepper-container']}>
         <StepperUI
           activeStep={activeStep}
-          orientation="vertical"
+          orientation={isMobile ? 'horizontal' : 'vertical'}
           connector={null}
           className={styles['steps']}
         >
@@ -41,7 +41,7 @@ function Stepper({children, steps = STEPS, activeStep}: Props) {
                     color: '#022959',
                   },
                   '.Mui-disabled.MuiStepLabel-iconContainer span': {
-                    border: '1px solid #ffffff;',
+                    border: '1px solid #ffffff',
                     color: 'white',
                   },
                   '.MuiStepLabel-labelContainer span': {
@@ -51,6 +51,9 @@ function Stepper({children, steps = STEPS, activeStep}: Props) {
                     lineHeight: '14px',
                     marginBottom: '4px',
                   },
+                  '.MuiStepLabel-labelContainer': {
+                    display: isMobile ? 'none' : '',
+                  }
                 }}
               >
                 {step.description}
@@ -59,7 +62,7 @@ function Stepper({children, steps = STEPS, activeStep}: Props) {
           ))}
         </StepperUI>
       </Box>
-      {children}
+      <Box className={styles['page-container']}>{children}</Box>
     </Container>
   )
 }

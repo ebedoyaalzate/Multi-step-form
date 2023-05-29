@@ -24,3 +24,40 @@
     margin-bottom: 30px;
   }
 }
+
+.page-container {
+  height: 100%;
+  max-width: 500px;
+  width: 100%;
+  background-color: white;
+  margin-left: 30px;
+}
+
+@media (max-width: 700px) {
+  .container {
+    flex-direction: column;
+    margin: 0;
+    gap: 0;
+    background: $mobile-background;
+    height: 100vh;
+
+    .stepper-container {
+      height: 180px;
+      width: 100vw;
+      border-radius: 0;
+
+      .steps {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+    }
+
+    .page-container {
+      position: relative;
+      top: -50px;
+      margin: auto;
+      border-radius: 10px;
+    }
+  }
+}
