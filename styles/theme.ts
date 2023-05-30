@@ -2,6 +2,27 @@ import {createTheme} from '@mui/material'
 
 export const theme = createTheme({
   components: {
+    MuiButton: {
+      variants: [
+        {
+          props: {variant: 'contained'},
+          style: {
+            backgroundColor: '#164A8A',
+            width: '123px',
+            height: '50px',
+            borderRadius: '8px',
+            fontWeight: 500,
+            fontSize: '14px',
+            lineHeight: '18px',
+          },
+        },
+      ],
+    },
+    MuiContainer: {
+      defaultProps: {
+        disableGutters: true,
+      },
+    },
     MuiStepLabel: {
       styleOverrides: {
         root: {

@@ -1,0 +1,33 @@
+@import 'styles/colors';
+
+.container {
+  display: flex;
+  flex-direction: column;
+
+  .title-container {
+    margin: 50px 0;
+
+    .title {
+      font-style: normal;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 37px;
+      color: $denim;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 25px;
+      color: $grey;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    margin: 24px
+  }
+}
