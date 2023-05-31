@@ -1,9 +1,6 @@
 import {Box, Container} from '@mui/material'
 import styles from './styles.module.scss'
-import {
-  RegisterOptions,
-  useController,
-} from 'react-hook-form'
+import {RegisterOptions, useController} from 'react-hook-form'
 
 type InputProps = {
   label: string
@@ -15,7 +12,14 @@ type InputProps = {
   defaultValue: any
 }
 
-function Input({name, rules, label, control, defaultValue, ...props}: InputProps) {
+function Input({
+  name,
+  rules,
+  label,
+  control,
+  defaultValue,
+  ...props
+}: InputProps) {
   const {
     field: {ref, ...rest},
     fieldState,
@@ -23,7 +27,7 @@ function Input({name, rules, label, control, defaultValue, ...props}: InputProps
     name,
     control,
     rules,
-    defaultValue
+    defaultValue,
   })
 
   const hasError = !!fieldState?.error?.message
@@ -43,6 +47,7 @@ function Input({name, rules, label, control, defaultValue, ...props}: InputProps
       <input
         className={styles['input']}
         id={name}
+        data-testid={`${name}-input`}
         {...props}
         {...rest}
         ref={ref}

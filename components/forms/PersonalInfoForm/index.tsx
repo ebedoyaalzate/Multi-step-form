@@ -65,6 +65,7 @@ function PersonalInfoForm() {
           type="submit"
           size="medium"
           disabled={!isValid}
+          data-testid="submit"
         >
           Next Step
         </Button>
