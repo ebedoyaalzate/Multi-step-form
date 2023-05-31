@@ -1,0 +1,34 @@
+@import 'styles/colors';
+
+.container {
+  .texts {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    margin: 0 5px 8px;
+    display: flex;
+    justify-content: space-between;
+
+    .error-message {
+      color: $error;
+    }
+  }
+
+  .input {
+    border: 1px solid $soft-grey;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 100%;
+    height: 50px;
+    padding: 16px;
+    margin-bottom: 24px;
+
+    &:focus {
+      border: 1px solid $purple;
+    }
+  }
+
+  .error {
+    border: 1px solid $error;
+  }
+}

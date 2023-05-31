@@ -3,11 +3,11 @@ import Home from '../../pages/index'
 import '@testing-library/jest-dom'
 
 describe('Home', () => {
-  it('renders a stepper heading', () => {
+  it('renders a heading', () => {
     render(<Home />)
 
-    const stepper = screen.getByRole('heading', {name: 'YOUR INFO'})
+    const heading = screen.getByRole('heading', {name: 'Personal Info'})
 
-    expect(stepper).toBeInTheDocument()
+    expect(heading).toBeInTheDocument()
   })
 })
