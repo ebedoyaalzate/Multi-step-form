@@ -1,36 +1,51 @@
 import {Box, Container} from '@mui/material'
 import styles from './styles.module.scss'
-import {FieldErrors, RegisterOptions} from 'react-hook-form'
+import {
+  RegisterOptions,
+  useController,
+} from 'react-hook-form'
 
 type InputProps = {
   label: string
   placeholder: string
   name: string
   type: string
-  register: any
   rules?: RegisterOptions
-  errors?: FieldErrors
+  control: any
+  defaultValue: any
 }
 
-function Input({name, register, rules, errors, label, ...props}: InputProps) {
-  console.log(errors?.[name])
-  const messageError = errors?.[name]?.message?.toString()
+function Input({name, rules, label, control, defaultValue, ...props}: InputProps) {
+  const {
+    field: {ref, ...rest},
+    fieldState,
+  } = useController({
+    name,
+    control,
+    rules,
+    defaultValue
+  })
+
+  const hasError = !!fieldState?.error?.message
+
   return (
     <Container className={styles['container']}>
       <Box className={styles['texts']}>
         <label className={styles['label']} htmlFor={name}>
           {label}
         </label>
-        {errors?.[name] ? (
-          <span className={styles['error-message']}>{messageError}</span>
+        {hasError ? (
+          <span className={styles['error-message']}>
+            {fieldState?.error?.message}
+          </span>
         ) : null}
       </Box>
       <input
         className={styles['input']}
         id={name}
         {...props}
-        {...(register && register(name, rules))}
-        ref={null}
+        {...rest}
+        ref={ref}
       />
     </Container>
   )

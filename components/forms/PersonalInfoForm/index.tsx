@@ -9,7 +9,8 @@ function PersonalInfoForm() {
   const {
     register,
     handleSubmit,
-    formState: {errors},
+    formState: {errors, isValid},
+    control,
   } = useForm<PersonalForm>({mode: 'all'})
 
   return (
@@ -22,11 +23,11 @@ function PersonalInfoForm() {
         type="text"
         placeholder="Esteban Bedoya"
         name="name"
-        register={register}
-        errors={errors}
+        control={control}
         rules={{
           required: 'This field is required',
         }}
+        defaultValue=""
       />
       <Input
         label="Email Address"
@@ -40,26 +41,31 @@ function PersonalInfoForm() {
             message: 'This is not an Email',
           },
         }}
-        register={register}
-        errors={errors}
+        control={control}
+        defaultValue=""
       />
       <Input
         label="Phone Number"
         type="text"
         placeholder="+1 234 567 890"
         name="phone"
-        register={register}
-        errors={errors}
+        control={control}
         rules={{
           required: 'This field is required',
           pattern: {
             value: PHONE_REGEX,
-            message: 'This is not an Email',
+            message: 'This is not a valid phone number',
           },
         }}
+        defaultValue=""
       />
       <Box className={styles['buttons-container']}>
-        <Button variant="contained" type="submit" size="medium">
+        <Button
+          variant="contained"
+          type="submit"
+          size="medium"
+          disabled={!isValid}
+        >
           Next Step
         </Button>
       </Box>
