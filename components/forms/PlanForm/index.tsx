@@ -24,6 +24,7 @@ export default function PlanForm() {
             option={option}
             handleOnClick={handlePlan}
             isSelected={option === plan}
+            key={option.name}
           />
         ))}
       </Box>
