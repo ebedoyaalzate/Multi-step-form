@@ -14,7 +14,7 @@ export default function AddOns() {
             Add-ons help enhance your gaming experience.
           </span>
         </Box>
-        <AddOnsForm />
+        <AddOnsForm activeStep={ACTIVE_STEP} />
       </Container>
     </Stepper>
   )

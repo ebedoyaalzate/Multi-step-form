@@ -2,12 +2,19 @@ import {Box, Button, Container, Switch} from '@mui/material'
 import SelectCard from './components/SelectCard'
 import styles from './styles.module.scss'
 import {CARDS_OPTIONS} from './constants'
-import {useState} from 'react'
+import {useContext, useState} from 'react'
 import {PlanOptions} from './types'
-
-export default function PlanForm() {
-  const [plan, setPlan] = useState<PlanOptions>()
-  const [isMonthly, setIsMonthly] = useState(true)
+import {useRouter} from 'next/router'
+import {STEPS} from '@/components/Stepper/constants'
+import {FormContext} from '@/context'
+interface Props {
+  activeStep: number
+}
+export default function PlanForm({activeStep}: Props) {
+  const {planInfo, setPlanInfo} = useContext(FormContext)
+  const [plan, setPlan] = useState<PlanOptions>(planInfo.option)
+  const [isMonthly, setIsMonthly] = useState(planInfo.isMonthly)
+  const {push} = useRouter()
 
   const handlePlan = (option: PlanOptions) => {
     setPlan(option)
@@ -16,6 +23,15 @@ export default function PlanForm() {
   const handleSwitch = () => {
     setIsMonthly(val => !val)
   }
+
+  const handleClick = () => {
+    setPlanInfo &&
+      setPlanInfo({
+        option: plan,
+        isMonthly,
+      })
+    push(STEPS[activeStep + 1].path)
+  }
   return (
     <Container className={styles['container']}>
       <Box className={styles['cards-container']}>
@@ -23,7 +39,7 @@ export default function PlanForm() {
           <SelectCard
             option={option}
             handleOnClick={handlePlan}
-            isSelected={option === plan}
+            isSelected={option.name === plan?.name}
             key={option.name}
           />
         ))}
@@ -34,7 +50,7 @@ export default function PlanForm() {
         >
           Monthly
         </span>
-        <Switch color="primary" onChange={handleSwitch} />
+        <Switch color="primary" onChange={handleSwitch} checked={!isMonthly} />
         <span
           className={`${styles['span']} ${!isMonthly && styles['is-selected']}`}
         >
@@ -42,15 +58,21 @@ export default function PlanForm() {
         </span>
       </Box>
       <Box className={styles['buttons-container']}>
-        <Button variant="text" size="medium" data-testid="back-btn">
+        <Button
+          variant="text"
+          size="medium"
+          onClick={() => push(STEPS[activeStep - 1].path)}
+          data-testid="back-btn"
+        >
           Go Back
         </Button>
         <Button
           variant="contained"
           type="submit"
           size="medium"
+          onClick={handleClick}
           data-testid="submit"
-          disabled={!plan}
+          disabled={!plan.name}
         >
           Next Step
         </Button>

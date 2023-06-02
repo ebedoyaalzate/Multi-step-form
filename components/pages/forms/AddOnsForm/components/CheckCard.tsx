@@ -5,11 +5,12 @@ import {useState} from 'react'
 
 interface Props {
   option: AddOns
+  isChecked: boolean
   handleOnChange: (option: AddOns) => void
 }
 
-export default function CheckCard({option, handleOnChange}: Props) {
-  const [isSelected, setIsSelected] = useState(false)
+export default function CheckCard({option, isChecked, handleOnChange}: Props) {
+  const [isSelected, setIsSelected] = useState(isChecked)
   const handleChange = () => {
     handleOnChange(option)
     setIsSelected(val => !val)
@@ -21,7 +22,11 @@ export default function CheckCard({option, handleOnChange}: Props) {
       }`}
       onClick={() => handleOnChange(option)}
     >
-      <Checkbox className={styles['checkbox']} onChange={handleChange} />
+      <Checkbox
+        className={styles['checkbox']}
+        onChange={handleChange}
+        checked={isChecked}
+      />
       <Box className={styles['title-container']}>
         <h3 className={styles['name']}>{option.name}</h3>
         <span className={styles['description']}>{option.description}</span>

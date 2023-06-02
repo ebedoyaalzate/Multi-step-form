@@ -14,7 +14,7 @@ export default function SummaryPage() {
             Double-check everything looks OK before confirming.
           </span>
         </Box>
-        <Summary />
+        <Summary activeStep={ACTIVE_STEP} />
       </Container>
     </Stepper>
   )

@@ -14,7 +14,7 @@ export default function SelectPlan() {
             You have the option of monthly or yearly billing.
           </span>
         </Box>
-        <PlanForm />
+        <PlanForm activeStep={ACTIVE_STEP} />
       </Container>
     </Stepper>
   )

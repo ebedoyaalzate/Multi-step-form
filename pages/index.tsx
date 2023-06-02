@@ -14,7 +14,7 @@ export default function Home() {
             Please provide your name, email address, and phone number.
           </span>
         </Box>
-        <PersonalInfoForm />
+        <PersonalInfoForm activeStep={ACTIVE_STEP}/>
       </Container>
     </Stepper>
   )
