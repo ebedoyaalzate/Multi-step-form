@@ -3,8 +3,15 @@ import PersonalInfo from '../../../components/pages/forms/PersonalInfoForm'
 import '@testing-library/jest-dom'
 import {personalInfoMock} from '@/tests/mocks/forms'
 
+const mockPush = jest.fn()
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(() => ({
+    push: mockPush,
+  })),
+}))
+
 const setUp = () => {
-  const {container} = render(<PersonalInfo />)
+  const {container} = render(<PersonalInfo activeStep={0} />)
   const nameInput = screen.getByTestId('name-input')
   const emailInput = screen.getByTestId('email-input')
   const phoneInput = screen.getByTestId('phone-input')

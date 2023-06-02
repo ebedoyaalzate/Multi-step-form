@@ -15,7 +15,9 @@ export default function Success() {
           height={80}
           width={80}
         />
-        <h1 className={styles['title']}>Thank you!</h1>
+        <h1 className={styles['title']} data-testid="header-title">
+          Thank you!
+        </h1>
         <p className={styles['description']}>
           Thanks for confirming your subscription! We hope you have fun using
           our platform. If you ever need support, please feel free to email us

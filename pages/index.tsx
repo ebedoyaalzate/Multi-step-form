@@ -9,12 +9,14 @@ export default function Home() {
     <Stepper activeStep={ACTIVE_STEP}>
       <Container className={styles['container']}>
         <Box className={styles['title-container']}>
-          <h1 className={styles['title']}>Personal Info</h1>
+          <h1 className={styles['title']} data-cy="header-title">
+            Personal Info
+          </h1>
           <span className={styles['description']}>
             Please provide your name, email address, and phone number.
           </span>
         </Box>
-        <PersonalInfoForm activeStep={ACTIVE_STEP}/>
+        <PersonalInfoForm activeStep={ACTIVE_STEP} />
       </Container>
     </Stepper>
   )

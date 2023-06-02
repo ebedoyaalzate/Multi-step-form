@@ -3,6 +3,13 @@ import Stepper from '../../components/Stepper/index'
 import '@testing-library/jest-dom'
 import {STEPS} from '../mocks/stepper'
 
+const mockPush = jest.fn()
+jest.mock('next/router', () => ({
+  useRouter: jest.fn(() => ({
+    push: mockPush,
+  })),
+}))
+
 describe('Stepper', () => {
   beforeEach(() => {
     render(

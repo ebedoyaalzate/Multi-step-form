@@ -9,7 +9,9 @@ export default function SelectPlan() {
     <Stepper activeStep={ACTIVE_STEP}>
       <Container className={styles['container']}>
         <Box className={styles['title-container']}>
-          <h1 className={styles['title']}>Select your plan</h1>
+          <h1 className={styles['title']} data-testid="header-title">
+            Select your plan
+          </h1>
           <span className={styles['description']}>
             You have the option of monthly or yearly billing.
           </span>

@@ -16,8 +16,15 @@
     "incremental": true,
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "types": ["jest", "@types/testing-library__jest-dom"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"],
+  "exclude": [
+    "node_modules",
+    "cypress/**/*",
+    "cypress.config.ts",
+    "**/*.cy.ts",
+    "node_modules/cypress/**.ts"
+  ]
 }
