@@ -1,5 +1,5 @@
 import {fireEvent, render, screen, waitFor} from '@testing-library/react'
-import PersonalInfo from '../../../components/forms/PersonalInfoForm'
+import PersonalInfo from '../../../components/pages/forms/PersonalInfoForm'
 import '@testing-library/jest-dom'
 import {personalInfoMock} from '@/tests/mocks/forms'
 

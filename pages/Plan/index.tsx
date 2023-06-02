@@ -1,7 +1,7 @@
 import Stepper from '@/components/Stepper'
 import {Box, Container} from '@mui/material'
 import styles from '../styles.module.scss'
-import PlanForm from '@/components/forms/PlanForm'
+import PlanForm from '@/components/pages/forms/PlanForm'
 
 export default function SelectPlan() {
   const ACTIVE_STEP = 1

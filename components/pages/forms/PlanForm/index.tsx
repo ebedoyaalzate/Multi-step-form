@@ -3,13 +3,13 @@ import SelectCard from './components/SelectCard'
 import styles from './styles.module.scss'
 import {CARDS_OPTIONS} from './constants'
 import {useState} from 'react'
-import {CardOptions} from './types'
+import {PlanOptions} from './types'
 
 export default function PlanForm() {
-  const [plan, setPlan] = useState<CardOptions>()
+  const [plan, setPlan] = useState<PlanOptions>()
   const [isMonthly, setIsMonthly] = useState(true)
 
-  const handlePlan = (option: CardOptions) => {
+  const handlePlan = (option: PlanOptions) => {
     setPlan(option)
   }
 

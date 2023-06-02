@@ -1,0 +1,66 @@
+@import 'styles/mixins';
+@import 'styles/colors';
+
+.container {
+  .summary-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 100px;
+
+    .summary-description {
+      background-color: $light-grey;
+      margin-bottom: 25px;
+    }
+    .description {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin: 16px 24px;
+      border-radius: 8px;
+      padding-bottom: 8px;
+
+      span {
+        color: $grey;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+      }
+
+      .descr-title {
+        display: flex;
+        flex-direction: column;
+
+        span {
+          margin-bottom: 8px;
+          font-weight: 500;
+        }
+
+        a {
+          color: $purple;
+        }
+      }
+
+      .total-amount {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 20px;
+        color: $purple;
+      }
+    }
+
+    .plan-descr {
+      span {
+        font-style: normal;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        color: $denim;
+      }
+    }
+  }
+
+  .buttons-container {
+    @include buttons-container;
+  }
+}

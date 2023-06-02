@@ -1,20 +1,20 @@
 import Stepper from '@/components/Stepper'
-import PersonalInfoForm from '@/components/pages/forms/PersonalInfoForm'
 import {Box, Container} from '@mui/material'
-import styles from './styles.module.scss'
+import styles from '../styles.module.scss'
+import Summary from '@/components/pages/summary'
 
-export default function Home() {
-  const ACTIVE_STEP = 0
+export default function SummaryPage() {
+  const ACTIVE_STEP = 3
   return (
     <Stepper activeStep={ACTIVE_STEP}>
       <Container className={styles['container']}>
         <Box className={styles['title-container']}>
-          <h1 className={styles['title']}>Personal Info</h1>
+          <h1 className={styles['title']}>Finishing up</h1>
           <span className={styles['description']}>
-            Please provide your name, email address, and phone number.
+            Double-check everything looks OK before confirming.
           </span>
         </Box>
-        <PersonalInfoForm />
+        <Summary />
       </Container>
     </Stepper>
   )
