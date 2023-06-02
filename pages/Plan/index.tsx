@@ -1,20 +1,20 @@
 import Stepper from '@/components/Stepper'
-import PersonalInfoForm from '@/components/forms/PersonalInfoForm'
 import {Box, Container} from '@mui/material'
-import styles from './styles.module.scss'
+import styles from '../styles.module.scss'
+import PlanForm from '@/components/forms/PlanForm'
 
-export default function Home() {
-  const ACTIVE_STEP = 0
+export default function SelectPlan() {
+  const ACTIVE_STEP = 1
   return (
     <Stepper activeStep={ACTIVE_STEP}>
       <Container className={styles['container']}>
         <Box className={styles['title-container']}>
-          <h1 className={styles['title']}>Personal Info</h1>
+          <h1 className={styles['title']}>Select your plan</h1>
           <span className={styles['description']}>
-            Please provide your name, email address, and phone number.
+            You have the option of monthly or yearly billing.
           </span>
         </Box>
-        <PersonalInfoForm />
+        <PlanForm />
       </Container>
     </Stepper>
   )

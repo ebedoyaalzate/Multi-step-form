@@ -16,6 +16,15 @@ export const theme = createTheme({
             lineHeight: '18px',
           },
         },
+        {
+          props: {variant: 'text'},
+          style: {
+            fontWeight: '500',
+            fontSize: '14px',
+            lineHeight: '18px',
+            color: '#022959',
+          },
+        },
       ],
     },
     MuiContainer: {

@@ -4,7 +4,7 @@ import StepLabel from '@mui/material/StepLabel'
 import useMediaQuery from '@mui/material/useMediaQuery'
 import {Box, Container} from '@mui/material'
 import styles from './styles.module.scss'
-import {STEPS} from './constants'
+import {STEPS, stepperOverrides} from './constants'
 
 interface IStep {
   label: string
@@ -36,26 +36,7 @@ function Stepper({children, steps = STEPS, activeStep}: Props) {
                 optional={<h3>{step.label}</h3>}
                 icon={<span>{index + 1}</span>}
                 data-testid={`step-label-${index + 1}`}
-                sx={{
-                  '.Mui-active.MuiStepLabel-iconContainer span': {
-                    backgroundColor: '#BEE2FD',
-                    color: '#022959',
-                  },
-                  '.Mui-disabled.MuiStepLabel-iconContainer span': {
-                    border: '1px solid #ffffff',
-                    color: 'white',
-                  },
-                  '.MuiStepLabel-labelContainer span': {
-                    color: '#ABBCFF',
-                    fontWeight: '400',
-                    fontSize: '12px',
-                    lineHeight: '14px',
-                    marginBottom: '4px',
-                  },
-                  '.MuiStepLabel-labelContainer': {
-                    display: isMobile ? 'none' : '',
-                  },
-                }}
+                sx={stepperOverrides(isMobile)}
               >
                 {step.description}
               </StepLabel>
