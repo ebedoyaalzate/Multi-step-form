@@ -21,7 +21,9 @@ export default function Summary({activeStep}: Props) {
     planInfo.option.price,
   )
 
-  const handleClickConfirm = () => {}
+  const handleClickConfirm = () => {
+    push('/success')
+  }
   return (
     <Container className={styles['container']}>
       <Box className={styles['summary-container']}>

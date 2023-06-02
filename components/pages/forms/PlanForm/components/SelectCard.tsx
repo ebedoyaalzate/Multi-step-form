@@ -1,6 +1,7 @@
-import {Box, Button, CircularProgress, Container, Icon} from '@mui/material'
+import {Box, Container} from '@mui/material'
 import styles from './styles.module.scss'
 import {PlanOptions} from '../types'
+import Image from 'next/image'
 
 interface Props {
   option: PlanOptions
@@ -16,7 +17,13 @@ export default function SelectCard({option, handleOnClick, isSelected}: Props) {
       }`}
       onClick={() => handleOnClick(option)}
     >
-      <CircularProgress className={styles['icon']} />
+      <Image
+        className={styles['icon']}
+        src={option.icon}
+        alt={`${option.name}-icon`}
+        height={40}
+        width={40}
+      />
       <Box className={styles['title-container']}>
         <h3 className={styles['name']}>{option.name}</h3>
         <span className={styles['price']}>{`$${option.price}/mo`}</span>
