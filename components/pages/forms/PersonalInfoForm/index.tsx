@@ -4,19 +4,34 @@ import {useForm} from 'react-hook-form'
 import {PersonalForm} from './types'
 import {EMAIL_REGEX, PHONE_REGEX} from '@/utils/regex'
 import {Box, Button} from '@mui/material'
+import {useContext} from 'react'
+import {FormContext} from '@/context'
+import {useRouter} from 'next/router'
+import {STEPS} from '@/components/Stepper/constants'
 
-function PersonalInfoForm() {
+interface Props {
+  activeStep: number
+}
+
+function PersonalInfoForm({activeStep}: Props) {
   const {
-    register,
     handleSubmit,
-    formState: {errors, isValid},
+    formState: {isValid},
     control,
   } = useForm<PersonalForm>({mode: 'all'})
+  const {push} = useRouter()
+
+  const {personalInfo, setPersonalInfo} = useContext(FormContext)
+
+  const handleOnSubmit = (data: PersonalForm) => {
+    setPersonalInfo && setPersonalInfo(data)
+    push(STEPS[activeStep + 1].path)
+  }
 
   return (
     <form
       className={styles['container']}
-      onSubmit={handleSubmit(d => console.log(d))}
+      onSubmit={handleSubmit(data => handleOnSubmit(data))}
     >
       <Input
         label="Name"
@@ -27,7 +42,7 @@ function PersonalInfoForm() {
         rules={{
           required: 'This field is required',
         }}
-        defaultValue=""
+        defaultValue={personalInfo.name}
       />
       <Input
         label="Email Address"
@@ -42,7 +57,7 @@ function PersonalInfoForm() {
           },
         }}
         control={control}
-        defaultValue=""
+        defaultValue={personalInfo.email}
       />
       <Input
         label="Phone Number"
@@ -57,7 +72,7 @@ function PersonalInfoForm() {
             message: 'This is not a valid phone number',
           },
         }}
-        defaultValue=""
+        defaultValue={personalInfo.phone}
       />
       <Box className={styles['buttons-container']}>
         <Button
