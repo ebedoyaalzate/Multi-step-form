@@ -2,17 +2,17 @@ import {PlanOptions} from '../types'
 
 export const CARDS_OPTIONS: PlanOptions[] = [
   {
-    icon: '',
+    icon: 'images/plans/arcade.svg',
     name: 'Arcade',
     price: 9,
   },
   {
-    icon: '',
+    icon: 'images/plans/advanced.svg',
     name: 'Advance',
     price: 12,
   },
   {
-    icon: '',
+    icon: 'images/plans/pro.svg',
     name: 'Pro',
     price: 15,
   },
