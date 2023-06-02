@@ -13,7 +13,7 @@ export default function Summary({activeStep}: Props) {
   const {planInfo, addOnsInfo} = useContext(FormContext)
   const handleClickPlan = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault()
-    push('/plan')
+    push('/Plan')
   }
 
   const totalPerMonth = addOnsInfo.reduce(

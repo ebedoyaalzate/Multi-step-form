@@ -9,7 +9,7 @@ export const STEPS: Step[] = [
   {
     label: 'SELECT PLAN',
     description: 'STEP 2',
-    path: '/plan',
+    path: '/Plan',
   },
   {
     label: 'ADD-ONS',
