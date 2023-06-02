@@ -26,6 +26,7 @@ export default function CheckCard({option, isChecked, handleOnChange}: Props) {
         className={styles['checkbox']}
         onChange={handleChange}
         checked={isChecked}
+        data-testid={`${option.name.replace(/\s/g, '')}-check`}
       />
       <Box className={styles['title-container']}>
         <h3 className={styles['name']}>{option.name}</h3>

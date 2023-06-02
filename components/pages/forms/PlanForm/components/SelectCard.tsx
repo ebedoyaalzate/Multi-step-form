@@ -16,6 +16,7 @@ export default function SelectCard({option, handleOnClick, isSelected}: Props) {
         isSelected && styles['is-selected']
       }`}
       onClick={() => handleOnClick(option)}
+      data-testid={`${option.name}-card`}
     >
       <Image
         className={styles['icon']}

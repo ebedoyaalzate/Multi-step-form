@@ -9,7 +9,9 @@ export default function AddOns() {
     <Stepper activeStep={ACTIVE_STEP}>
       <Container className={styles['container']}>
         <Box className={styles['title-container']}>
-          <h1 className={styles['title']}>Pick add-ons</h1>
+          <h1 className={styles['title']} data-testid="header-title">
+            Pick add-ons
+          </h1>
           <span className={styles['description']}>
             Add-ons help enhance your gaming experience.
           </span>

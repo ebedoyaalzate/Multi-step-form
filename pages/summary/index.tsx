@@ -9,7 +9,9 @@ export default function SummaryPage() {
     <Stepper activeStep={ACTIVE_STEP}>
       <Container className={styles['container']}>
         <Box className={styles['title-container']}>
-          <h1 className={styles['title']}>Finishing up</h1>
+          <h1 className={styles['title']} data-testid="header-title">
+            Finishing up
+          </h1>
           <span className={styles['description']}>
             Double-check everything looks OK before confirming.
           </span>
