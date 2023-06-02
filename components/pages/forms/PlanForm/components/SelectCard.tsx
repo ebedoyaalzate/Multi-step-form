@@ -1,10 +1,10 @@
 import {Box, Button, CircularProgress, Container, Icon} from '@mui/material'
 import styles from './styles.module.scss'
-import {CardOptions} from '../types'
+import {PlanOptions} from '../types'
 
 interface Props {
-  option: CardOptions
-  handleOnClick: (option: CardOptions) => void
+  option: PlanOptions
+  handleOnClick: (option: PlanOptions) => void
   isSelected: boolean
 }
 
@@ -19,7 +19,7 @@ export default function SelectCard({option, handleOnClick, isSelected}: Props) {
       <CircularProgress className={styles['icon']} />
       <Box className={styles['title-container']}>
         <h3 className={styles['name']}>{option.name}</h3>
-        <span className={styles['price']}>{option.price}</span>
+        <span className={styles['price']}>{`$${option.price}/mo`}</span>
       </Box>
     </Container>
   )
