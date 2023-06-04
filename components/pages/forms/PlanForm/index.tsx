@@ -50,7 +50,12 @@ export default function PlanForm({activeStep}: Props) {
         >
           Monthly
         </span>
-        <Switch color="primary" onChange={handleSwitch} checked={!isMonthly} />
+        <Switch
+          color="primary"
+          onChange={handleSwitch}
+          checked={!isMonthly}
+          data-testid="switch-is-monthly"
+        />
         <span
           className={`${styles['span']} ${!isMonthly && styles['is-selected']}`}
         >

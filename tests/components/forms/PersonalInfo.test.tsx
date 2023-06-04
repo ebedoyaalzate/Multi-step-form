@@ -2,6 +2,8 @@ import {fireEvent, render, screen, waitFor} from '@testing-library/react'
 import PersonalInfo from '../../../components/pages/forms/PersonalInfoForm'
 import '@testing-library/jest-dom'
 import {personalInfoMock} from '@/tests/mocks/forms'
+import {STEPS} from '@/components/Stepper/constants'
+import {act} from 'react-dom/test-utils'
 
 const mockPush = jest.fn()
 jest.mock('next/router', () => ({
@@ -10,17 +12,20 @@ jest.mock('next/router', () => ({
   })),
 }))
 
+const ACTIVE_STEP = 0
+
 const setUp = () => {
-  const {container} = render(<PersonalInfo activeStep={0} />)
+  const {container} = render(<PersonalInfo activeStep={ACTIVE_STEP} />)
   const nameInput = screen.getByTestId('name-input')
   const emailInput = screen.getByTestId('email-input')
   const phoneInput = screen.getByTestId('phone-input')
   const submitButton = screen.getByTestId('submit')
+  const form = screen.getByTestId('form')
 
-  return {nameInput, emailInput, phoneInput, submitButton, container}
+  return {nameInput, emailInput, phoneInput, submitButton, form, container}
 }
 
-describe('Home', () => {
+describe('PersonalInfo form', () => {
   it('Should be enabled submit button', async () => {
     const {nameInput, emailInput, phoneInput, submitButton} = setUp()
     fireEvent.change(nameInput, {target: {value: personalInfoMock.name}})
@@ -56,6 +61,21 @@ describe('Home', () => {
       const errorText = container.querySelector('error-message')
 
       expect(errorText).not.toBeInTheDocument()
+    })
+  })
+
+  it('Should redirect to plan page when form is submited', async () => {
+    const {nameInput, emailInput, phoneInput, form} = setUp()
+    fireEvent.change(nameInput, {target: {value: personalInfoMock.name}})
+    fireEvent.change(emailInput, {target: {value: personalInfoMock.email}})
+    fireEvent.change(phoneInput, {target: {value: personalInfoMock.phone}})
+
+    await act(() => {
+      fireEvent.submit(form)
+    })
+    await waitFor(() => {
+      expect(mockPush).toHaveBeenCalled()
+      expect(mockPush).toHaveBeenCalledWith(STEPS[ACTIVE_STEP + 1].path)
     })
   })
 })
