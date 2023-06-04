@@ -32,6 +32,7 @@ function PersonalInfoForm({activeStep}: Props) {
     <form
       className={styles['container']}
       onSubmit={handleSubmit(data => handleOnSubmit(data))}
+      data-testid="form"
     >
       <Input
         label="Name"
